@@ -1,12 +1,17 @@
+language: python
+
 branches:
   only:
   - release
 
 addons:
   sonarcloud:
-    organization: "nestor-mateus-globant" # the key of the org you chose at step #3
+    #organization: "nestor-mateus-globant" # the key of the org you chose at step #3
     token:
       secure: $SONAR_TOKEN # encrypted value of your token
+    code_climate:
+      repo_token: 9e5485644e68817249c41efc4ae4064ef45db50a
+
 #script:
   # other script steps might be done before running the actual analysis
   #- sonar-scanner

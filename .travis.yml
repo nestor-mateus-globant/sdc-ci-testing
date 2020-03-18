@@ -4,9 +4,17 @@ branches:
 
 addons:
   sonarcloud:
-    organization: "nestor-mateus-globant_sdc-ci-testing" # the key of the org you chose at step #3
+    organization: "nestor-mateus-globant" # the key of the org you chose at step #3
     token:
-      secure: "994d5d1e2386d8e09b03c39bc305167bd1e342f7" # encrypted value of your token
-script:
+      secure: $SONAR_TOKEN # encrypted value of your token
+#script:
   # other script steps might be done before running the actual analysis
-  - sonar-scanner
+  #- sonar-scanner
+#  - sonar-scanner -Dsonar.projectKey=$SONAR_PROJECT_KEY
+
+
+jobs:
+  include:
+    - stage: "Run Tests & SonarCloud Analysis"
+      script:
+        - sonar-scanner -Dsonar.projectKey=$SONAR_PROJECT_KEY

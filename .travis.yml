@@ -2,7 +2,6 @@ branches:
   only:
   - release
 
-
 addons:
   sonarcloud:
     organization: "nestor-mateus-globant" # the key of the org you chose at step #3

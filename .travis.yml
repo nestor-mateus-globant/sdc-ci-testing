@@ -2,7 +2,7 @@ addons:
   sonarcloud:
     organization: "nestor-mateus-globant" # the key of the org you chose at step #3
     token:
-      secure: "3f31356b5f300d0d979ad5429cbb3382640431d5" # encrypted value of your token
+      secure: SONAR_TOKEN # encrypted value of your token
 script:
   # other script steps might be done before running the actual analysis
-  - sonar-scanne
+  - sonar-scanner

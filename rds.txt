@@ -1,0 +1,82 @@
+create table if not EXISTS pwbi.pwbi_config (
+	azure_client_id varchar(100) not null primary key,
+	uname           varchar(100) not null,
+	pwd             varchar(100) not null 
+);
+
+SELECT * FROM pwbi.pwbi_config
+
+insert into pwbi.pwbi_config (azure_client_id,uname,pwd) values
+('10a31dfa-4e65-4464-b0ee-3e0766c6fcff', 'mauriciogarayp@ticsocial.com.co', 'M3d1c4l_*1');
+
+
+
+drop table if EXISTS pwbi.pwbi_groups;
+
+create table if not EXISTS pwbi.pwbi_groups (
+	group_id varchar(100) not null primary key,
+	group_name varchar(100),
+	client_id varchar(100)
+);
+
+
+
+
+
+select * from pwbi.pwbi_groups;
+
+
+
+
+insert into pwbi.pwbi_groups (group_id,group_name) values('a3c96b61-cec8-45f9-8ce7-711b193ad872', 'BAYER','10a31dfa-4e65-4464-b0ee-3e0766c6fcff');
+insert into pwbi.pwbi_groups (group_id,group_name) values('8c9b0c1b-8799-4311-9b63-497a04485f3d', 'COLSUBSIDIO','10a31dfa-4e65-4464-b0ee-3e0766c6fcff');
+insert into pwbi.pwbi_groups (group_id,group_name) values('cfa63f26-06f5-43fb-8a59-c22488a99664', 'COOMEVAMP','10a31dfa-4e65-4464-b0ee-3e0766c6fcff');
+
+
+
+drop table if EXISTS pwbi.pwbi_datasets;
+
+
+create table if not EXISTS pwbi.pwbi_datasets(
+	dataset_id varchar(100) not null primary key,
+	dataset_name varchar(100),
+	group_id varchar(100),
+	FOREIGN key (group_id)  REFERENCES pwbi.pwbi_groups(group_id)
+);
+
+
+
+select * from pwbi.pwbi_datasets;
+
+insert into pwbi.pwbi_datasets (dataset_id,dataset_name,group_id) values('3c42f0ea-76a5-4116-b664-f6cc20f0eb25','Bayer-Eylia','a3c96b61-cec8-45f9-8ce7-711b193ad872');
+
+insert into pwbi.pwbi_datasets (dataset_id,dataset_name,group_id) values('4ccf1b9a-0ccb-4431-8518-ea4c113acaac','Profamilia - CC Famisanar','a3c96b61-cec8-45f9-8ce7-711b193ad872');
+
+insert into pwbi.pwbi_datasets (dataset_id,dataset_name,group_id) values('49d2a7dd-2616-4a9b-adac-63524aade2a5','Profamilia - CC SURA','a3c96b61-cec8-45f9-8ce7-711b193ad872');
+
+
+
+drop table pwbi.pwbi_reports;
+
+
+create table if not EXISTS pwbi.pwbi_reports (
+   client_id varchar(100),
+   group_id  varchar(100),
+   report_id varchar(100),
+   report_name varchar(100),
+   settings   text,
+   foreign key (client_id) references pwbi.pwbi_config(azure_client_id),
+   FOREIGN key (group_id)  REFERENCES pwbi.pwbi_groups(group_id)
+); 
+
+insert into pwbi.pwbi_reports (client_id,group_id,report_id,report_name,settings) values ('10a31dfa-4e65-4464-b0ee-3e0766c6fcff','a3c96b61-cec8-45f9-8ce7-711b193ad872','d6253457-b9e4-477b-a060-e9555b6d9aae', 'BAYER - Eylia','');
+
+insert into pwbi.pwbi_reports (client_id,group_id,report_id,report_name,settings) values ('10a31dfa-4e65-4464-b0ee-3e0766c6fcff','a3c96b61-cec8-45f9-8ce7-711b193ad872','07be977e-fab4-4e4d-bf25-71cbb1ca308a', 'Famisanar','');
+
+insert into pwbi.pwbi_reports (client_id,group_id,report_id,report_name,settings) values ('10a31dfa-4e65-4464-b0ee-3e0766c6fcff','a3c96b61-cec8-45f9-8ce7-711b193ad872','872d0db8-b849-46b4-896c-acdd0f259b3e', 'Sura','');
+
+
+select * from pwbi.pwbi_reports;
+
+
+SELECT * FROM pwbi.pwbi_reports where group_id = 'a3c96b61-cec8-45f9-8ce7-711b193ad872' and lower(report_name) like '%sura%';

@@ -22,4 +22,4 @@ jobs:
   include:
     - stage: "Run Tests & SonarCloud Analysis"
       script:
-        - sonar-scanner -Dsonar.projectKey=$SONAR_PROJECT_KEY
+        - sonar-scanner

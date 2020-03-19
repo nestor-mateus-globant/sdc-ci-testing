@@ -24,7 +24,7 @@ addons:
 #after_success:
 script:
   # other script steps might be done before running the actual analysis
-  - sonar-scanner -x
+  - sonar-scanner -X
   #- sonar-scanner -Dsonar.projectKey=$PROYECT_KEY -Dsonar.sources=. -Dsonar.organization=nestor-mateus-globant
 
 

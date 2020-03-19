@@ -1,22 +1,30 @@
 language: java
 dist: trusty
 
-branches:
-  only:
-  - release
+jdk:
+- oraclejdk8
+- openjdk8
+
+
+script:
+# add --update-snapshots if snapshots are used
+- mvn clean install -Psecurity-checks -Dmaven.javadoc.skip=true --batch-mode --show-version
+# the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+- if [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar; fi
+
 
 addons:
   sonarcloud:
     organization: "nestor-mateus-globant" # the key of the org you chose at step #3
     token:
-      secure: "3f31356b5f300d0d979ad5429cbb3382640431d5" # encrypted value of your token
+      secure: $SONAR_TOKEN # encrypted value of your token
     #code_climate:
       #repo_token: 9e5485644e68817249c41efc4ae4064ef45db50a
 
-script:
+#script:
   # other script steps might be done before running the actual analysis
   #- sonar-scanner
-  - - sonar-scanner -Dsonar.projectKey=$PROYECT_KEY -Dsonar.sources=. -Dsonar.organization=nestor-mateus-globant
+  #- sonar-scanner -Dsonar.projectKey=$PROYECT_KEY -Dsonar.sources=. -Dsonar.organization=nestor-mateus-globant
 
 
 #jobs:

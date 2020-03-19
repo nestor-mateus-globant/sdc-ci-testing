@@ -17,7 +17,7 @@ addons:
   sonarcloud:
     organization: "nestor-mateus-globant" # the key of the org you chose at step #3
     token:
-      secure: $SONAR_TOKEN #"a655b83c70c6403fd86d149a017c9119442cf78d" # encrypted value of your token
+      secure: "a655b83c70c6403fd86d149a017c9119442cf78d" # encrypted value of your token
     #code_climate:
       #repo_token: 9e5485644e68817249c41efc4ae4064ef45db50a
 

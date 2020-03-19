@@ -1,4 +1,5 @@
-language: python
+language: java
+dist: trusty
 
 branches:
   only:
@@ -6,20 +7,20 @@ branches:
 
 addons:
   sonarcloud:
-    #organization: "nestor-mateus-globant" # the key of the org you chose at step #3
+    organization: "nestor-mateus-globant" # the key of the org you chose at step #3
     token:
-      secure: $SONAR_TOKEN # encrypted value of your token
-    code_climate:
-      repo_token: 9e5485644e68817249c41efc4ae4064ef45db50a
+      secure: "3f31356b5f300d0d979ad5429cbb3382640431d5" # encrypted value of your token
+    #code_climate:
+      #repo_token: 9e5485644e68817249c41efc4ae4064ef45db50a
 
-#script:
+script:
   # other script steps might be done before running the actual analysis
-  #- sonar-scanner
+  - sonar-scanner
 #  - sonar-scanner -Dsonar.projectKey=$SONAR_PROJECT_KEY
 
 
-jobs:
-  include:
-    - stage: "Run Tests & SonarCloud Analysis"
-      script:
-        - sonar-scanner
+#jobs:
+  #include:
+    #- stage: "Run Tests & SonarCloud Analysis"
+     # script:
+      #  - sonar-scanner

@@ -1,44 +1,14 @@
-#language: java
 dist: trusty
 sudo: required
-
-
-
-#script:
-# add --update-snapshots if snapshots are used
-#- mvn clean install -Psecurity-checks -Dmaven.javadoc.skip=true --batch-mode --show-version
-# the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-#- if [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar; fi
-
-
 addons:
-  #code_climate:
-    #repo_token: 9e5485644e68817249c41efc4ae4064ef45db50a
   sonarcloud:
-    organization: "nestor-mateus-globant" # the key of the org you chose at step #3
-    token: 
-      secure: "zDO9fByk7H7SNcqnuW7M5C+JIzwRQv89GXtOUlPKetuQharyJEGuvf9za03KW07mlfNMygal8FNVIcs3dAJr+l1U81+OZU/s3qR6gQI7VNZBtq+ubuT7pVxN8SqA3G5451SAwnoejZ1FfJrSafMGzIhppApzM6pYZd73FHCdyCuMmYWXGI6j0ec2y2Lqesmbl8bRa+77tLTBEy6eKkpA/o3qMwlut/Uj2xMAdXU4GdeE83vHz+r248U5vc6US4qkBdtADpPb0VEpaodH4DA9q3Ag27pslmIU06nXTnFvd2BogJZQwt3b02nPsQh7gkzthbASRMu2bntyVSCSyYLzRYlZMgjU8Vqie2v1OS0jJ8GuUmg7zhKIZR9/pBAhDM//TiKlpUx2pTc+4YDYHxhlvN0gfMYnZxEvjT1ZftLX4pr9djYtrnutIbjs7Ikah5eSAvwxDeHZXN+/fDJb/ucfvHy2uF20BKPCcnZMkqM1L8HjJSs+582+RnQBtkefEFUAxTBRWsla74ZrfiycwliKm/6tXp5GMIQ9XQKPGB2amNp7G2QpMpI2IrVQGdvdgIqrNlMWRo0rXltr/odwfjA8g+xuOXnyf40px+U23aM2Yj5B1xt1nmp7pIZpfQAr66REffCZ1vBENVrhXru10iXQ/89WFv8HXpJeJ3gMyD93H34="
-      #"a655b83c70c6403fd86d149a017c9119442cf78d" # encrypted value of your token
-    
+    organization: nestor-mateus-globant
+    token:
+      secure: zDO9fByk7H7SNcqnuW7M5C+JIzwRQv89GXtOUlPKetuQharyJEGuvf9za03KW07mlfNMygal8FNVIcs3dAJr+l1U81+OZU/s3qR6gQI7VNZBtq+ubuT7pVxN8SqA3G5451SAwnoejZ1FfJrSafMGzIhppApzM6pYZd73FHCdyCuMmYWXGI6j0ec2y2Lqesmbl8bRa+77tLTBEy6eKkpA/o3qMwlut/Uj2xMAdXU4GdeE83vHz+r248U5vc6US4qkBdtADpPb0VEpaodH4DA9q3Ag27pslmIU06nXTnFvd2BogJZQwt3b02nPsQh7gkzthbASRMu2bntyVSCSyYLzRYlZMgjU8Vqie2v1OS0jJ8GuUmg7zhKIZR9/pBAhDM//TiKlpUx2pTc+4YDYHxhlvN0gfMYnZxEvjT1ZftLX4pr9djYtrnutIbjs7Ikah5eSAvwxDeHZXN+/fDJb/ucfvHy2uF20BKPCcnZMkqM1L8HjJSs+582+RnQBtkefEFUAxTBRWsla74ZrfiycwliKm/6tXp5GMIQ9XQKPGB2amNp7G2QpMpI2IrVQGdvdgIqrNlMWRo0rXltr/odwfjA8g+xuOXnyf40px+U23aM2Yj5B1xt1nmp7pIZpfQAr66REffCZ1vBENVrhXru10iXQ/89WFv8HXpJeJ3gMyD93H34=
 jdk:
-  - oraclejdk8
-
-
-
-#after_success:
+- oraclejdk8
 script:
-  # other script steps might be done before running the actual analysis
-  - sonar-scanner -X
-  #- sonar-scanner -Dsonar.projectKey=$PROYECT_KEY -Dsonar.sources=. -Dsonar.organization=nestor-mateus-globant
-
-
+- sonar-scanner -X
 cache:
   directories:
-    - '$HOME/.sonar/cache'
-
-
-#jobs:
-  #include:
-    #- stage: "Run Tests & SonarCloud Analysis"
-     # script:
-      #  - sonar-scanner
+  - "$HOME/.sonar/cache"

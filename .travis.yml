@@ -1,0 +1,11 @@
+language: python 
+
+dist: trusty
+sudo: required
+
+branches:
+  only:
+    - release # this buil just can be apply to branch
+
+script:
+  - echo "hola mundo"

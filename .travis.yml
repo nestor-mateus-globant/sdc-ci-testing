@@ -5,15 +5,4 @@ branches:
   only:
   - release
 
-addons:
-  sonarcloud:
-    organization: nestor-mateus-globant
-    token:
-      secure: "zDO9fByk7H7SNcqnuW7M5C+JIzwRQv89GXtOUlPKetuQharyJEGuvf9za03KW07mlfNMygal8FNVIcs3dAJr+l1U81+OZU/s3qR6gQI7VNZBtq+ubuT7pVxN8SqA3G5451SAwnoejZ1FfJrSafMGzIhppApzM6pYZd73FHCdyCuMmYWXGI6j0ec2y2Lqesmbl8bRa+77tLTBEy6eKkpA/o3qMwlut/Uj2xMAdXU4GdeE83vHz+r248U5vc6US4qkBdtADpPb0VEpaodH4DA9q3Ag27pslmIU06nXTnFvd2BogJZQwt3b02nPsQh7gkzthbASRMu2bntyVSCSyYLzRYlZMgjU8Vqie2v1OS0jJ8GuUmg7zhKIZR9/pBAhDM//TiKlpUx2pTc+4YDYHxhlvN0gfMYnZxEvjT1ZftLX4pr9djYtrnutIbjs7Ikah5eSAvwxDeHZXN+/fDJb/ucfvHy2uF20BKPCcnZMkqM1L8HjJSs+582+RnQBtkefEFUAxTBRWsla74ZrfiycwliKm/6tXp5GMIQ9XQKPGB2amNp7G2QpMpI2IrVQGdvdgIqrNlMWRo0rXltr/odwfjA8g+xuOXnyf40px+U23aM2Yj5B1xt1nmp7pIZpfQAr66REffCZ1vBENVrhXru10iXQ/89WFv8HXpJeJ3gMyD93H34="
-jdk:
-- oraclejdk8
-#script:
-#- sonar-scanner -X
-cache:
-  directories:
-  - "$HOME/.sonar/cache"
+

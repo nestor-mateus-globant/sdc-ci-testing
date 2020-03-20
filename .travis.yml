@@ -1,8 +1,6 @@
-dist: trusty
-sudo: required
+language: ruby
 
-branches:
-  only:
-  - release
-
+rvm:
+ - 2.2
+ - jruby
 
